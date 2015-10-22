@@ -213,7 +213,7 @@ class BaseSerializer(Field):
                 self._validated_data = self.run_validation(self.initial_data)
             except ValidationError as exc:
                 self._validated_data = {}
-                self._errors = exc.detail
+                self._errors = get_validation_error_detail(exc)
             else:
                 self._errors = {}
 
